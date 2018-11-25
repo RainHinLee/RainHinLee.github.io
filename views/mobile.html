@@ -5,15 +5,18 @@
 	<meta name="viewport" id='viewport' content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>Poet</title>
 	<link rel="manifest" href="static/libs/manifest.json" />
-	<link rel="stylesheet" href="https://at.alicdn.com/t/font_543473_t82wxkwgzic9dx6r.css" />
-	<link rel="stylesheet" href="/static/style/mobile.css">
-	<script src="/model/index.js"></script>
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_543473_t82wxkwgzic9dx6r.css" />
+	<link rel="stylesheet" href="static/style/mobile.css">
 </head>
 <body>
 	<div class="side">
 		<div class='menu'>
 			<div class='main'>
-				<ul></ul>				
+				<ul>
+					{% for item in models %}
+						<li data-key="{{loop.key}}">{{loop.key}}</li>
+					{% endfor %}
+				</ul>				
 			</div>
 			<div class='sub'>
 				<ul></ul>
@@ -32,17 +35,17 @@
 		<ul></ul>
 	</div>
 </body>
-<script src="/static/libs/zepto.js"></script>
-<script src="/static/libs/spine.js"></script>
+<script src="static/libs/zepto.js"></script>
+<script src="static/libs/spine.js"></script>
 <script>
-
+	
+	var models = {{JSON.stringify(models)}};
 
 	var Controller = Spine.Controller.sub({
 			elements:{
 				'.side' : 'side',
 				'.sub ul' : 'itemsBox',
 				'.sub li' : 'items',
-				'.main ul' : 'menu',
 				'.main li' : 'mainItems',
 				'.body>ul' : 'box',
 			},
@@ -119,28 +122,30 @@
 				this.closeSide();
 			},
 			
-			renderMenu(){
-				let textArr = Object.keys(window.models).map(item=>{
-					return `<li data-key="{{item.key}}">{{item.key}}</li>`
-				});
-				
-				this.menu.html(textArr.join(''));
-				this.refreshElements();
-				this.delegateEvents(this.events);
+			serverWorker:function(){
+				if ('serviceWorker' in navigator) {
+				  	navigator.serviceWorker.register('/service-worker.js', { scope: '/' }).then(function(reg) {
+				    	console.log('Registration succeeded. Scope is ' + reg.scope);
+				  	}).catch(function(error) {
+				    	console.log('Registration failed with ' + error);
+				  	});
+				}				
 			},
 			
 			init:function (){
 				window.addEventListener('hashchange',this.hashChange.bind(this));
-				this.renderMenu();
+				
 				this.changeItems({currentTarget:this.mainItems.get(0)});
 				this.change({currentTarget: this.items.get(0)});
 				this.hashChange();
+				this.serverWorker();
 			}
 	});
 	
 	new Controller({el:$('body')})
 	
+	
+	
 </script>
-
 
 				

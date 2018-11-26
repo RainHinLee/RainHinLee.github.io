@@ -1,5 +1,5 @@
 
-{
+window.models = {
 	'现代诗歌':{	
 		"雾灯诗选":{
 			hash: 'wudeng',

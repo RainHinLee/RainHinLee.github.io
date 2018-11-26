@@ -121,7 +121,7 @@
 			
 			renderMenu(){
 				let textArr = Object.keys(window.models).map(item=>{
-					return `<li data-key="{{item.key}}">{{item.key}}</li>`
+					return `<li data-key="${item}">${item}</li>`
 				});
 				
 				this.menu.html(textArr.join(''));

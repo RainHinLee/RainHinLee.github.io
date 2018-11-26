@@ -6151,9 +6151,7 @@ window.models = {
 
 	
 		},		
-	}
-	},
-	
+	},	
 	'唐诗宋词':{
 		'唐绝句选':{
 			hash : 'tangjuejuxuan',

@@ -4,9 +4,11 @@
   "author": "bae",
   "description": "The first bae nodejs app!",
   "scripts": {
-    "release": "fis3 release --dest ../server --watch"
+    "start": "nodemon server.js"
   },
   "dependencies": {
-    "jssha": "^2.3.0"
+    "express": "^4.16.4",
+    "jssha": "^2.3.0",
+    "serve-static": "^1.13.2"
   }
 }

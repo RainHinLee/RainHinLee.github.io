@@ -168,7 +168,7 @@
 			change(ev){
 				var el = $(ev.currentTarget);
 				var hash = el.attr('data-route');
-				window.router.addHash(hash);
+				document.location.hash = hash
 				window.dispatcher.trigger('menu:hide');
 			},
 
@@ -281,7 +281,7 @@
             });
             this.box.html(textArr.join(''));
             this.refresh();
-            this.inited || this.initClick();
+            this.initClick();
           },
 
           change(ev){
@@ -305,9 +305,13 @@
           },
 
           initClick(){
+						var hashs = document.location.hash.slice(1).split('&');
     				var hash = this.items.eq(0).attr('data-route');
-    				document.location.hash = hash;
-            this.inited = true;
+						
+						if(hashs.length==1){
+							var url = document.location.origin +"#" + hash
+							document.location.replace(url);
+						}
     			},
 
           hashChange(){ //--hash变动
@@ -525,6 +529,7 @@
 
   .screen-body p{
     padding: 3px 0px;
+		min-height:20px;
     letter-spacing:3px;
     font-size:16px;
   }

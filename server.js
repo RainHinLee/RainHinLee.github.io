@@ -10,6 +10,6 @@ app.get('/',function(req,res){
 	res.sendFile(file);
 })
 	
-app.listen(38080)
+app.listen(38080);
 
 	

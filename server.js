@@ -8,8 +8,8 @@ app.use('/model',express.static('model'));
 app.get('/',function(req,res){
 	var file = path.resolve(__dirname,'./index.html');
 	res.sendFile(file);
-})
+});
 	
-app.listen(38080)
+app.listen(38080);
 
 	

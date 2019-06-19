@@ -15,6 +15,16 @@ app.get('/short',function(req,res){
 	var file = path.resolve(__dirname,'./short.html');
 	res.sendFile(file);
 });	
+
+app.get('/mobile',function(req,res){
+	var file = path.resolve(__dirname,'./mobile.html');
+	res.sendFile(file);
+});	
+
+app.get('/mshort',function(req,res){
+	var file = path.resolve(__dirname,'./mshort.html');
+	res.sendFile(file);
+});	
 	
 app.listen(38080);
 

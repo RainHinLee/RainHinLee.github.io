@@ -17,6 +17,8 @@
 			font-family:"simsun";
 			font-size: 15px;
 			background: rgb(255,252,250);
+			-webkit-text-size-adjust: none;
+			color:#4a4a4a;
 		}
 		
 		h1{
@@ -53,7 +55,6 @@
 	let texts = window.models.slice(0).map(item=>{
 		let arr = [];
 		arr.push(`<li><h3>${item.title}</h3>`)
-		
 		arr.push(item.body.map(item=>{
 			return `<p>${item}</p>`;
 		}).join(''));
@@ -63,8 +64,4 @@
 	});
 	
 	document.querySelector('ul').innerHTML=texts.join('')
-	
-	console.log(text)
-	
-	
 </script>

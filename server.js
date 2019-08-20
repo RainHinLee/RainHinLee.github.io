@@ -25,7 +25,12 @@ app.get('/mshort',function(req,res){
 	var file = path.resolve(__dirname,'./mshort.html');
 	res.sendFile(file);
 });	
-	
+
+app.get('/editor',function(req,res){
+	var file = path.resolve(__dirname,'./editor.html');
+	res.sendFile(file);
+});	
+
 app.listen(38080);
 
 /* 
@@ -40,21 +45,6 @@ app.listen(38080);
     "代理":"C"
 }
 
-
 字体： simsun
-
-			
-
-
-
-
-
-
-
-
-
- 
- http://123.57.162.196:38080/timetable/mupdate/class_timelen/100/course_way/1/course_type/2/class_limit/1/lesson_num/2/teacher_uid/10008540/class_datetime/2019-05-21%2019:30/course_level/1/timetable_state/1class_timelen/100/course_way/1/course_type/1/class_limit/1/lesson_num/2/teacher_uid/10008540/class_datetime/2019-05-21%2019:30/course_level/1/timetable_state/1class_timelen/100/course_way/1/course_type/2/class_limit/1/lesson_num/2/teacher_uid/10008540/class_datetime/2019-05-21%2019:30/course_level/1/timetable_state/1
- 
  
  */
